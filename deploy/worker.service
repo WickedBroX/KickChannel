@@ -1,0 +1,14 @@
+[Unit]
+Description=GamerApp Worker
+After=network.target postgresql.service
+
+[Service]
+User=ubuntu
+WorkingDirectory=/var/www/gamerapp/backend
+ExecStart=/usr/bin/node dist/worker.js
+Restart=always
+Environment=NODE_ENV=production
+EnvironmentFile=/var/www/gamerapp/backend/.env
+
+[Install]
+WantedBy=multi-user.target
